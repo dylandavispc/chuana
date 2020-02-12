@@ -90,7 +90,12 @@ class App extends Component {
             path="/login"
             render={() => <Login updateUser={this.updateUser} />}
           />
-          {/* <Route exact path="/profile" component={Profile} /> */}
+          <Route
+            exact
+            path="/register"
+            render={() => <Register updateUser={this.updateUser} />}
+          />
+          {/* <Route exact path="/register" updateUser={this.updateUser} component={Register} /> */}
         </div>
         {/* <div><Footer /></div> */}
       </Router>

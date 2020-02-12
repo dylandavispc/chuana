@@ -11,7 +11,8 @@ class Register extends Component {
       first_name: "",
       last_name: "",
       email: "",
-      password: ""
+      password: "",
+      redirectTo: null
     };
 
     this.onChange = this.onChange.bind(this);
@@ -45,26 +46,26 @@ class Register extends Component {
         email: this.state.email,
         password: this.state.password
       })
-        .then(response => {
-          console.log(response);
-          if (!response.data.errmsg) {
-            console.log("successful signup");
-            this.props.updateUser({
-              loggedIn: true,
-              email: response.data.email
-            });
-            this.setState({
-              //redirect to login page
-              redirectTo: "/catalog"
-            });
-          } else {
-            console.log("username already taken");
-          }
-        })
-        .catch(error => {
-          console.log("signup error: ");
-          console.log(error);
-        });
+      .then(response => {
+        console.log("register response: ");
+        console.log(response);
+        console.log(this.props);
+        if (response.status === 200) {
+          // update App.js state
+          this.props.updateUser({
+            loggedIn: true,
+            email: response.data.email
+          });
+          // update the state to redirect to home
+          this.setState({
+            redirectTo: "/catalog"
+          });
+        }
+      })
+      .catch(error => {
+        console.log("register error: ");
+        console.log(error);
+      });
     }
   };
 
