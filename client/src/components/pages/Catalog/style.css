@@ -1,0 +1,21 @@
+.metismenu {
+    position: fixed;
+    width: 15rem;
+    z-index: 9001;
+    bottom: 0;
+    left: 0;
+    top: 216px;
+  }
+
+.mockLogo {
+  width: 15rem;
+  position: fixed;
+  top: -15px;
+  left: 0px;
+  z-index: 9000;
+  background-color: #303336;
+}
+
+#navCat {
+  background-color: #303336;
+}
